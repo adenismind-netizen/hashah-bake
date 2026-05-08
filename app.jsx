@@ -239,19 +239,27 @@ function OrderForm({ chatId }) {
   const [city, setCity] = useState('qassim');
   const [note, setNote] = useState('');
   const [status, setStatus] = useState('idle'); // idle|sending|sent|error
+  const [errors, setErrors] = useState({});
 
   const fl = MENU.find((x) => x.id === flavor);
   const isScoop = flavor === 'scoop';
   const total = (fl?.price ?? 0) * (qty / (isScoop ? 1 : 10));
 
   const cities = [
-  ['qassim', 'القصيم', 'نفس اليوم'],
-  ['riyadh', 'الرياض', '١–٢ أيام'],
-  ['jeddah', 'جدة', '٢–٣ أيام'],
-  ['other', 'مدن أخرى', '٣–٤ أيام']];
+  ['qassim', 'القصيم', 'نفس اليوم']];
+
+  const validateStep2 = () => {
+    const e = {};
+    if (!name.trim()) e.name = 'الاسم مطلوب';
+    if (!phone.trim()) e.phone = 'رقم الجوال مطلوب';
+    else if (!/^05\d{8}$/.test(phone.replace(/\s/g, ''))) e.phone = 'رقم غير صحيح — مثال: 0501234567';
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
 
 
   const submit = async () => {
+    if (!validateStep2()) { setStep(2); return; }
     const cityName = cities.find((c) => c[0] === city)?.[1] ?? city;
     const text =
     `🍪 <b>طلب جديد — هشه بيكري</b>\n` +
@@ -340,12 +348,15 @@ function OrderForm({ chatId }) {
           {step === 2 &&
           <div className="oc-fields">
               <label className="fld">
-                <span>الاسم</span>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="اسمك الكامل" />
+                <span>الاسم <span className="req-star">*</span></span>
+                <input type="text" value={name} onChange={(e) => { setName(e.target.value); setErrors((er) => ({...er, name: ''})); }} placeholder="اسمك الكامل" required />
+                {errors.name && <span className="fld-err">{errors.name}</span>}
               </label>
               <label className="fld">
-                <span>رقم الجوال</span>
-                <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="٠٥٠ ٠٠٠ ٠٠٠٠" />
+                <span>رقم الجوال <span className="req-star">*</span></span>
+                <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value); setErrors((er) => ({...er, phone: ''})); }} placeholder="0501234567" required />
+                {errors.phone && <span className="fld-err">{errors.phone}</span>}
+                <span className="fld-hint">راح يتم التواصل معاك على الخاص للتحويل</span>
               </label>
               <label className="fld">
                 <span>ملاحظة (اختياري)</span>
@@ -372,7 +383,10 @@ function OrderForm({ chatId }) {
             <strong>{Math.round(total)} <i>ر.س</i></strong>
           </div>
           {step < 3 ?
-          <button className="btn primary block" onClick={() => setStep((s) => s + 1)}>التالي</button> :
+          <button className="btn primary block" onClick={() => {
+            if (step === 2 && !validateStep2()) return;
+            setStep((s) => s + 1);
+          }}>التالي</button> :
 
           <button className="btn primary block" onClick={submit} disabled={status === 'sending'}>
               {status === 'sending' ? 'جاري الإرسال…' : status === 'error' ? 'فشل — حاول مرة ثانية' : 'إرسال على تيليجرام'}
