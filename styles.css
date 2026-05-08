@@ -148,7 +148,7 @@ input, textarea { font-family: inherit; }
   overflow: hidden;
   background: var(--paper);
 }
-.hero-image img { width: 100%; height: clamp(320px, 50vh, 540px); object-fit: cover; object-position: center 25%; }
+.hero-image img { width: 100%; height: clamp(320px, 50vh, 540px); object-fit: contain; object-position: center center; }
 .img-tag { position: absolute; bottom: 18px; right: 22px; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
 
 /* ---------- About ---------- */
