@@ -13,7 +13,7 @@ const MENU = [
 function Tray() {
   return (
     <div className="tray-wrap">
-      <img src="assets/cookies-basket.gif" alt="كوكيز هشه — طازجة من الفرن" />
+      <img src="assets/kitchen-door.png" alt="مطبخ هشه" />
     </div>);
 
 }
