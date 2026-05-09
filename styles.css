@@ -46,7 +46,7 @@ input, textarea { font-family: inherit; }
 /* ---------- Nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, #d0c4b8 92%, transparent);
+  background: color-mix(in srgb, #8a7e6a 92%, transparent);
   backdrop-filter: blur(8px);
 }
 .nav-inner {
@@ -76,7 +76,7 @@ input, textarea { font-family: inherit; }
 }
 
 /* ---------- Hero — editorial ---------- */
-.hero-wrap { background: #d0c4b8; }
+.hero-wrap { background: #8a7e6a; }
 .hero { max-width: 1480px; margin: 0 auto; padding: 32px 40px 80px; }
 .hero-row {
   display: grid; grid-template-columns: 1fr 1fr 1fr;
@@ -148,7 +148,7 @@ input, textarea { font-family: inherit; }
   margin-inline: auto;
   border-radius: 8px;
   overflow: hidden;
-  background: #d0c4b8;
+  background: #8a7e6a;
   aspect-ratio: 3/4;
   max-width: 420px;
   width: 100%;
