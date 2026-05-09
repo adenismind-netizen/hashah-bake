@@ -144,11 +144,14 @@ input, textarea { font-family: inherit; }
 .hero-image {
   position: relative;
   margin-top: 56px;
+  margin-inline: auto;
   border-radius: 4px;
   overflow: hidden;
   background: var(--paper);
+  aspect-ratio: 1/1;
+  max-width: 280px;
 }
-.hero-image img { width: 100%; height: clamp(320px, 50vh, 540px); object-fit: contain; object-position: center center; }
+.hero-image img { width: 100%; height: 100%; object-fit: contain; }
 .img-tag { position: absolute; bottom: 18px; right: 22px; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
 
 /* ---------- About ---------- */
@@ -453,8 +456,8 @@ input, textarea { font-family: inherit; }
   .hd-line.two { padding-inline-end: 0; }
   .hd-line.three { font-size: 0.5em; padding-block: 8px; }
   .hd-line.four { padding-inline-start: 0; }
-  .hero-image { margin-top: 36px; }
-  .hero-image img { height: 260px; }
+  .hero-image { margin-top: 36px; max-width: 220px; }
+  .hero-image img { height: 100%; }
   .hero-actions { justify-content: stretch; flex-wrap: wrap; }
   .hero-actions .btn { flex: 1; justify-content: center; }
   .about, .menu, .order, .gallery { padding: 56px 18px; }

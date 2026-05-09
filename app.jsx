@@ -76,7 +76,7 @@ function Hero({ onJump }) {
       </div>
 
       <div className="hero-image">
-        <img src="assets/kitchen-header.gif" alt="مطبخ هشه" />
+        <img src="assets/kitchen-door.png" alt="مطبخ هشه" />
         <span className="img-tag">— على الهوا، يُخبز الآن</span>
       </div>
     </header>);
