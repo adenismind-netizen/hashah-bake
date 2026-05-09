@@ -13,7 +13,7 @@ const MENU = [
 function Tray() {
   return (
     <div className="tray-wrap">
-      <img src="assets/kitchen-door.png" alt="مطبخ هشه" />
+      <img src="assets/cookies-basket.gif" alt="كوكيز هشه" />
     </div>);
 
 }
@@ -76,7 +76,7 @@ function Hero({ onJump }) {
       </div>
 
       <div className="hero-image">
-        <img src="assets/kitchen-door.png" alt="مطبخ هشه" />
+        <img src="assets/kitchen-door.png?v=2" alt="مطبخ هشه" />
         <span className="img-tag">— على الهوا، يُخبز الآن</span>
       </div>
     </header>);
