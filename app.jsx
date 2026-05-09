@@ -436,8 +436,10 @@ function App() {
 
   return (
     <div className="app">
-      <Nav onJump={onJump} />
-      <Hero onJump={onJump} />
+      <div className="hero-wrap">
+        <Nav onJump={onJump} />
+        <Hero onJump={onJump} />
+      </div>
       <About />
       <MenuSection />
       <Gallery />
